@@ -1,0 +1,136 @@
+auths:
+  qnap_v3:
+    username: YOUR_SNMP_USERNAME
+    security_level: authNoPriv
+    password: YOUR_SNMP_PASSWORD
+    auth_protocol: SHA
+    version: 3
+
+modules:
+  # Network interface traffic stats
+  if_mib:
+    walk:
+      - 1.3.6.1.2.1.2.2        # ifTable
+      - 1.3.6.1.2.1.31.1.1     # ifXTable (high-capacity counters)
+    metrics:
+      - name: ifOperStatus
+        oid: 1.3.6.1.2.1.2.2.1.8
+        type: gauge
+        help: Operational state of the interface (1=up, 2=down)
+        indexes:
+          - labelname: ifIndex
+            type: gauge
+        lookups:
+          - labels: [ifIndex]
+            labelname: ifDescr
+            oid: 1.3.6.1.2.1.2.2.1.2
+            type: DisplayString
+      - name: ifHCInOctets
+        oid: 1.3.6.1.2.1.31.1.1.1.6
+        type: counter
+        help: Octets received on the interface (high capacity)
+        indexes:
+          - labelname: ifIndex
+            type: gauge
+        lookups:
+          - labels: [ifIndex]
+            labelname: ifDescr
+            oid: 1.3.6.1.2.1.2.2.1.2
+            type: DisplayString
+      - name: ifHCOutOctets
+        oid: 1.3.6.1.2.1.31.1.1.1.10
+        type: counter
+        help: Octets transmitted on the interface (high capacity)
+        indexes:
+          - labelname: ifIndex
+            type: gauge
+        lookups:
+          - labels: [ifIndex]
+            labelname: ifDescr
+            oid: 1.3.6.1.2.1.2.2.1.2
+            type: DisplayString
+      - name: ifInErrors
+        oid: 1.3.6.1.2.1.2.2.1.14
+        type: counter
+        help: Inbound packets with errors
+        indexes:
+          - labelname: ifIndex
+            type: gauge
+        lookups:
+          - labels: [ifIndex]
+            labelname: ifDescr
+            oid: 1.3.6.1.2.1.2.2.1.2
+            type: DisplayString
+      - name: ifOutErrors
+        oid: 1.3.6.1.2.1.2.2.1.20
+        type: counter
+        help: Outbound packets with errors
+        indexes:
+          - labelname: ifIndex
+            type: gauge
+        lookups:
+          - labels: [ifIndex]
+            labelname: ifDescr
+            oid: 1.3.6.1.2.1.2.2.1.2
+            type: DisplayString
+    auth: qnap_v3
+
+  # QNAP NAS-MIB hardware metrics
+  qnap_nas:
+    get:
+      - 1.3.6.1.4.1.24681.1.2.5.0    # CPU load %
+      - 1.3.6.1.4.1.24681.1.2.18.0   # total memory MB
+      - 1.3.6.1.4.1.24681.1.2.19.0   # free memory MB
+    walk:
+      - 1.3.6.1.4.1.24681.1.2.11     # disk table (temp, status, model)
+      - 1.3.6.1.4.1.24681.1.2.15     # fan table
+    metrics:
+      - name: qnapCPUUsage
+        oid: 1.3.6.1.4.1.24681.1.2.5.0
+        type: gauge
+        help: CPU usage percentage
+      - name: qnapTotalMemoryMB
+        oid: 1.3.6.1.4.1.24681.1.2.18.0
+        type: gauge
+        help: Total system memory in MB
+      - name: qnapFreeMemoryMB
+        oid: 1.3.6.1.4.1.24681.1.2.19.0
+        type: gauge
+        help: Free system memory in MB
+      - name: qnapDiskTemperature
+        oid: 1.3.6.1.4.1.24681.1.2.11.1.3
+        type: DisplayString
+        help: Disk temperature string e.g. "40 C/104 F"
+        indexes:
+          - labelname: diskIndex
+            type: gauge
+        lookups:
+          - labels: [diskIndex]
+            labelname: diskID
+            oid: 1.3.6.1.4.1.24681.1.2.11.1.2
+            type: DisplayString
+      - name: qnapDiskStatus
+        oid: 1.3.6.1.4.1.24681.1.2.11.1.4
+        type: DisplayString
+        help: Disk status (Ready/Error/Not present/etc)
+        indexes:
+          - labelname: diskIndex
+            type: gauge
+        lookups:
+          - labels: [diskIndex]
+            labelname: diskID
+            oid: 1.3.6.1.4.1.24681.1.2.11.1.2
+            type: DisplayString
+      - name: qnapFanSpeed
+        oid: 1.3.6.1.4.1.24681.1.2.15.1.3
+        type: gauge
+        help: Fan speed in RPM
+        indexes:
+          - labelname: fanIndex
+            type: gauge
+        lookups:
+          - labels: [fanIndex]
+            labelname: fanID
+            oid: 1.3.6.1.4.1.24681.1.2.15.1.2
+            type: DisplayString
+    auth: qnap_v3

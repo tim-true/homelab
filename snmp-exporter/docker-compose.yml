@@ -1,0 +1,16 @@
+services:
+  snmp-exporter:
+    image: prom/snmp-exporter:latest
+    container_name: snmp-exporter
+    restart: unless-stopped
+    ports:
+      - "9116:9116"
+    volumes:
+      - ./snmp.yml:/etc/snmp_exporter/snmp.yml:ro
+    networks:
+      - monitoring
+
+networks:
+  monitoring:
+    external: true
+    name: monitoring
