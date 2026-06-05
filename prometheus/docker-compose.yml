@@ -6,7 +6,7 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - prometheus_data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
@@ -31,15 +31,6 @@ services:
     networks:
       - monitoring
 
-  snmp-exporter:
-    image: prom/snmp-exporter:latest
-    container_name: snmp-exporter
-    restart: unless-stopped
-    ports:
-      - "9116:9116"
-    networks:
-      - monitoring
-
 volumes:
   prometheus_data:
     name: prometheus_data
@@ -47,5 +38,5 @@ volumes:
 
 networks:
   monitoring:
+    external: true
     name: monitoring
-    driver: bridge
