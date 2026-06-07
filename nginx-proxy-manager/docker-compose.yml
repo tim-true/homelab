@@ -4,9 +4,9 @@ services:
     container_name: nginx-proxy-manager
     restart: unless-stopped
     ports:
-      - "8080:80"
+      - "80:80"
       - "81:81"
-      - "444:443" 
+      - "443:443" 
     environment:
       DB_SQLITE_FILE: "/data/database.sqlite"
       DISABLE_IPV6: 'true'
