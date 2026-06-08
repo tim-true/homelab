@@ -1,0 +1,13 @@
+services:
+  cockpit:
+    image: cockpit/ws:latest
+    privileged: true
+    network_mode: host
+    volumes:
+      - /run/dbus/system_bus_socket:/run/dbus/system_bus_socket
+      - /run/systemd/journal:/run/systemd/journal
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+      - /etc/shadow:/etc/shadow:ro
+      - ./config:/etc/cockpit
+    restart: unless-stopped
