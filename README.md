@@ -8,7 +8,7 @@ Docker Compose services running on a Raspberry Pi 4 (4GB).
 |---|---|
 | Host | Raspberry Pi 4 (4GB) |
 | Domain | Custom domain (DNS via Cloudflare) |
-| NAS | QNAP |
+| NAS | QNAP TS-453Be |
 
 ## Network
 
@@ -18,7 +18,7 @@ Access is **Tailscale-only**. A wildcard DNS record points to the Tailscale IP �
 Client (Tailscale)
       │
       ▼
- *.yourdomain
+ *.domain
       │
       ▼
 Nginx Proxy Manager (80/443)
@@ -86,3 +86,4 @@ docker compose pull && docker compose up -d
 - **Portainer** proxy host requires `proxy_ssl_verify off;` in NPM's Advanced tab.
 - **Pi-hole** proxy host needs a redirect in NPM's Advanced tab: `location = / { return 301 /admin/; }`
 - **OpenWebUI** OOMs the Pi when other services are running — not deployed.
+- **Heimdall"" is not fully configured and working. 
