@@ -1,0 +1,15 @@
+title: truehlab
+favicon: https://truehlab.com/favicon.ico
+theme: dark
+color: slate
+headerStyle: clean
+layout:
+  Monitoring:
+    style: row
+    columns: 3
+  Management:
+    style: row
+    columns: 3
+  Media & Apps:
+    style: row
+    columns: 3

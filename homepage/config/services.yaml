@@ -1,0 +1,37 @@
+- Monitoring:
+    - Grafana:
+        href: https://grafana.truehlab.com
+        description: Metrics & dashboards
+        icon: grafana.png
+    - Prometheus:
+        href: https://prometheus.truehlab.com
+        description: Metrics collection
+        icon: prometheus.png
+    - Cockpit:
+        href: https://cockpit.truehlab.com
+        description: System management
+        icon: cockpit.png
+
+- Management:
+    - Portainer:
+        href: https://portainer.truehlab.com
+        description: Container management
+        icon: portainer.png
+    - Nginx Proxy Manager:
+        href: https://npm.truehlab.com
+        description: Reverse proxy
+        icon: nginx-proxy-manager.png
+    - Pi-hole:
+        href: https://pihole.truehlab.com
+        description: DNS & ad blocking
+        icon: pi-hole.png
+
+- Media & Apps:
+    - Nextcloud:
+        href: https://nextcloud.truehlab.com
+        description: File sync & storage
+        icon: nextcloud.png
+    - n8n:
+        href: https://n8n.truehlab.com
+        description: Workflow automation
+        icon: n8n.png
