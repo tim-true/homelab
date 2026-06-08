@@ -86,4 +86,4 @@ docker compose pull && docker compose up -d
 - **Portainer** proxy host requires `proxy_ssl_verify off;` in NPM's Advanced tab.
 - **Pi-hole** proxy host needs a redirect in NPM's Advanced tab: `location = / { return 301 /admin/; }`
 - **OpenWebUI** OOMs the Pi when other services are running — not deployed.
-- **Heimdall"" is not fully configured and working. 
+- **Heimdall** is not fully configured and working. 
