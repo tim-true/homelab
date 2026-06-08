@@ -11,3 +11,7 @@ snmp-exporter/snmp.yml
 /tailscale/tailscale_tmp/
 /nginx-proxy-manager/npm_data/
 /nginx-proxy-manager/npm_letsencrypt
+/homepage/config/kubernetes.yaml
+/homepage/config/proxmox.yaml
+/homepage/config/logs/
+/cockpit/config/ws-certs.d/
