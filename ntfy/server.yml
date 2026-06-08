@@ -1,0 +1,10 @@
+base-url: "https://ntfy.truehlab.com"
+listen-http: ":80"
+
+cache-file: /var/cache/ntfy/cache.db
+cache-duration: 12h
+
+auth-file: /var/lib/ntfy/user.db
+auth-default-access: deny-all
+
+behind-proxy: true
