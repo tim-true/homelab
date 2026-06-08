@@ -8,3 +8,4 @@
       dateStyle: short
       timeStyle: short
       hour12: false
+    timezone: {{HOMEPAGE_VAR_TZ}}
