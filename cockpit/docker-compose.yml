@@ -1,7 +1,7 @@
 services:
   cockpit:
     image: quay.io/cockpit/ws:latest
-    command: --port 9091
+    command: ["/container/label-run", "--port", "9091"]
     privileged: true
     network_mode: host
     volumes:
