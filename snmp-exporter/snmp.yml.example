@@ -1,18 +1,31 @@
 auths:
   qnap_v3:
-    username: YOUR_SNMP_USERNAME
+    username: CHANGE_ME
     security_level: authNoPriv
-    password: YOUR_SNMP_PASSWORD
+    password: CHANGE_ME
     auth_protocol: SHA
     version: 3
 
 modules:
-  # Network interface traffic stats
+  # Network interface counters, link speed, and admin/oper state
   if_mib:
     walk:
-      - 1.3.6.1.2.1.2.2        # ifTable
-      - 1.3.6.1.2.1.31.1.1     # ifXTable (high-capacity counters)
+      - 1.3.6.1.2.1.2.2        # ifTable (admin/oper status, errors)
+      - 1.3.6.1.2.1.31.1.1     # ifXTable (HC counters, ifHighSpeed)
     metrics:
+      - name: ifAdminStatus
+        oid: 1.3.6.1.2.1.2.2.1.7
+        type: gauge
+        help: Admin state of the interface (1=up, 2=down, 3=testing)
+        indexes:
+          - labelname: ifIndex
+            type: gauge
+        lookups:
+          - labels: [ifIndex]
+            labelname: ifDescr
+            oid: 1.3.6.1.2.1.2.2.1.2
+            type: DisplayString
+
       - name: ifOperStatus
         oid: 1.3.6.1.2.1.2.2.1.8
         type: gauge
@@ -25,6 +38,20 @@ modules:
             labelname: ifDescr
             oid: 1.3.6.1.2.1.2.2.1.2
             type: DisplayString
+
+      - name: ifHighSpeed
+        oid: 1.3.6.1.2.1.31.1.1.1.15
+        type: gauge
+        help: Interface link speed in Mbps
+        indexes:
+          - labelname: ifIndex
+            type: gauge
+        lookups:
+          - labels: [ifIndex]
+            labelname: ifDescr
+            oid: 1.3.6.1.2.1.2.2.1.2
+            type: DisplayString
+
       - name: ifHCInOctets
         oid: 1.3.6.1.2.1.31.1.1.1.6
         type: counter
@@ -37,6 +64,7 @@ modules:
             labelname: ifDescr
             oid: 1.3.6.1.2.1.2.2.1.2
             type: DisplayString
+
       - name: ifHCOutOctets
         oid: 1.3.6.1.2.1.31.1.1.1.10
         type: counter
@@ -49,6 +77,7 @@ modules:
             labelname: ifDescr
             oid: 1.3.6.1.2.1.2.2.1.2
             type: DisplayString
+
       - name: ifInErrors
         oid: 1.3.6.1.2.1.2.2.1.14
         type: counter
@@ -61,6 +90,7 @@ modules:
             labelname: ifDescr
             oid: 1.3.6.1.2.1.2.2.1.2
             type: DisplayString
+
       - name: ifOutErrors
         oid: 1.3.6.1.2.1.2.2.1.20
         type: counter
@@ -74,32 +104,61 @@ modules:
             oid: 1.3.6.1.2.1.2.2.1.2
             type: DisplayString
 
-  # QNAP NAS-MIB hardware metrics
+  # QNAP NAS hardware and system metrics
   qnap_nas:
     get:
-      - 1.3.6.1.4.1.24681.1.2.5.0    # CPU load %
-      - 1.3.6.1.4.1.24681.1.2.18.0   # total memory MB
-      - 1.3.6.1.4.1.24681.1.2.19.0   # free memory MB
+      - 1.3.6.1.4.1.24681.1.2.5.0    # QNAP CPU load % (returns 0 on some firmware)
+      - 1.3.6.1.4.1.24681.1.2.6.0    # CPU temperature string e.g. "45 C/113 F"
+      - 1.3.6.1.4.1.24681.1.2.7.0    # system temperature string
+      - 1.3.6.1.2.1.25.2.3.1.5.1     # hrStorageSize physical memory (index 1)
+      - 1.3.6.1.2.1.25.2.3.1.6.1     # hrStorageUsed physical memory (index 1)
     walk:
-      - 1.3.6.1.4.1.24681.1.2.11     # disk table (temp, status, model)
+      - 1.3.6.1.4.1.24681.1.2.11     # disk table (temp, status, model, SMART)
       - 1.3.6.1.4.1.24681.1.2.15     # fan table
+      - 1.3.6.1.2.1.25.3.3           # hrProcessorTable (4 CPU cores)
     metrics:
+
+      # CPU
       - name: qnapCPUUsage
         oid: 1.3.6.1.4.1.24681.1.2.5.0
         type: gauge
-        help: CPU usage percentage
-      - name: qnapTotalMemoryMB
-        oid: 1.3.6.1.4.1.24681.1.2.18.0
+        help: CPU usage percentage (returns 0 on some QNAP firmware versions)
+
+      - name: hrProcessorLoad
+        oid: 1.3.6.1.2.1.25.3.3.1.2
         type: gauge
-        help: Total system memory in MB
-      - name: qnapFreeMemoryMB
-        oid: 1.3.6.1.4.1.24681.1.2.19.0
-        type: gauge
-        help: Free system memory in MB
-      - name: qnapDiskTemperature
+        help: CPU load percentage per core
+        indexes:
+          - labelname: hrProcessorIndex
+            type: gauge
+
+      - name: qnapCPUTemp
+        oid: 1.3.6.1.4.1.24681.1.2.6.0
+        type: DisplayString
+        help: CPU temperature in Celsius (extracted from string)
+        regex_extracts:
+          _c:
+            - regex: '(\d+) C.*'
+              value: '$1'
+
+      - name: qnapSystemTemp
+        oid: 1.3.6.1.4.1.24681.1.2.7.0
+        type: DisplayString
+        help: System temperature in Celsius (extracted from string)
+        regex_extracts:
+          _c:
+            - regex: '(\d+) C.*'
+              value: '$1'
+
+      # Disks
+      - name: qnapDiskTemp
         oid: 1.3.6.1.4.1.24681.1.2.11.1.3
         type: DisplayString
-        help: Disk temperature string e.g. "40 C/104 F"
+        help: Disk temperature in Celsius (extracted from string)
+        regex_extracts:
+          _c:
+            - regex: '(\d+) C.*'
+              value: '$1'
         indexes:
           - labelname: diskIndex
             type: gauge
@@ -108,10 +167,11 @@ modules:
             labelname: diskID
             oid: 1.3.6.1.4.1.24681.1.2.11.1.2
             type: DisplayString
+
       - name: qnapDiskStatus
         oid: 1.3.6.1.4.1.24681.1.2.11.1.4
         type: DisplayString
-        help: Disk status (Ready/Error/Not present/etc)
+        help: Disk status string (Ready/Error/Not present/etc)
         indexes:
           - labelname: diskIndex
             type: gauge
@@ -120,6 +180,34 @@ modules:
             labelname: diskID
             oid: 1.3.6.1.4.1.24681.1.2.11.1.2
             type: DisplayString
+
+      - name: qnapDiskModel
+        oid: 1.3.6.1.4.1.24681.1.2.11.1.5
+        type: DisplayString
+        help: Disk model string
+        indexes:
+          - labelname: diskIndex
+            type: gauge
+        lookups:
+          - labels: [diskIndex]
+            labelname: diskID
+            oid: 1.3.6.1.4.1.24681.1.2.11.1.2
+            type: DisplayString
+
+      - name: qnapDiskSmartStatus
+        oid: 1.3.6.1.4.1.24681.1.2.11.1.7
+        type: DisplayString
+        help: Disk SMART health status string
+        indexes:
+          - labelname: diskIndex
+            type: gauge
+        lookups:
+          - labels: [diskIndex]
+            labelname: diskID
+            oid: 1.3.6.1.4.1.24681.1.2.11.1.2
+            type: DisplayString
+
+      # Fans
       - name: qnapFanSpeed
         oid: 1.3.6.1.4.1.24681.1.2.15.1.3
         type: gauge
@@ -132,3 +220,14 @@ modules:
             labelname: fanID
             oid: 1.3.6.1.4.1.24681.1.2.15.1.2
             type: DisplayString
+
+      # Memory (targeted GET on index 1 = Physical memory; units are 1024 bytes each)
+      - name: physicalMemorySize
+        oid: 1.3.6.1.2.1.25.2.3.1.5.1
+        type: gauge
+        help: Physical memory total in 1024-byte units
+
+      - name: physicalMemoryUsed
+        oid: 1.3.6.1.2.1.25.2.3.1.6.1
+        type: gauge
+        help: Physical memory used in 1024-byte units
