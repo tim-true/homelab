@@ -87,3 +87,13 @@ docker compose pull && docker compose up -d
 - **Pi-hole** proxy host needs a redirect in NPM's Advanced tab: `location = / { return 301 /admin/; }`
 - **OpenWebUI** OOMs the Pi when other services are running — not deployed.
 - **Heimdall** is not fully configured and working. 
+
+## Next Steps
+- Customize Cockpit. 
+- Complete Heimdall configuration and test. 
+- Finish and test OpenWebUI on a beefier piece of hardware. 
+- Setup actual notification rules for ntfy. 
+- Setup grafana for Qnap nas. 
+- Configure docker on Qnap and add environment to portainer
+- Build out nextcloud config, running on qnap. 
+
