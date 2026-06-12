@@ -6,15 +6,17 @@ services:
     ports:
       - "80:80"
       - "81:81"
-      - "443:443" 
+      - "443:443"
     environment:
       DB_SQLITE_FILE: "/data/database.sqlite"
       DISABLE_IPV6: 'true'
     volumes:
       - npm_data:/data
       - npm_letsencrypt:/etc/letsencrypt
+      - ./custom:/data/nginx/custom
+      - ./logs:/data/logs
 
-volumes: 
+volumes:
   npm_data:
     name: npm_data
   npm_letsencrypt:
