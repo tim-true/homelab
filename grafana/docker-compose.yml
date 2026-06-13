@@ -21,6 +21,7 @@ networks:
     external: true
     name: monitoring
 
-volumes: 
+volumes:
   grafana_data:
     name: grafana_data
+    external: true
