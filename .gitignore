@@ -17,3 +17,6 @@ snmp-exporter/snmp.yml
 /homepage/config/proxmox.yaml
 /homepage/config/logs/
 /cockpit/config/ws-certs.d/
+/dockge/data/
+/speedtest-tracker/config/
+/uptime-kuma/data/
