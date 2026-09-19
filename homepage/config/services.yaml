@@ -60,6 +60,12 @@
         description: Media server
         icon: plex.png
 
+- Storage & Data Management:
+    - Nextcloud:
+        href: https://nextcloud.truehlab.com
+        description: File sync & storage
+        icon: nextcloud.png
+
 - Automation & Workflow:
     - n8n:
         href: https://n8n.truehlab.com
