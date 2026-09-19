@@ -11,6 +11,14 @@
         href: https://cockpit.truehlab.com
         description: System management
         icon: cockpit.png
+    - Uptime Kuma:
+        href: https://uptime.truehlab.com
+        description: Uptime & latency monitoring
+        icon: uptime-kuma.png
+    - Dozzle:
+        href: https://dozzle.truehlab.com
+        description: Live container log viewer
+        icon: dozzle.png
 
 - Management:
     - Portainer:
@@ -25,13 +33,35 @@
         href: https://pihole.truehlab.com
         description: DNS & ad blocking
         icon: pi-hole.png
+    - Dockge:
+        href: https://dockge.truehlab.com
+        description: Compose stack manager
+        icon: dockge.png
+
+- Utilities:
+    - IT-Tools:
+        href: https://it-tools.truehlab.com
+        description: Dev/encode/decode toolbox
+        icon: it-tools.png
+    - CyberChef:
+        href: https://cyberchef.truehlab.com
+        description: Data analysis & transformation
+        icon: cyberchef.png
+    - Speedtest Tracker:
+        href: https://speedtest.truehlab.com
+        description: Internet speed history
+        icon: speedtest-tracker.png
 
 - Media & Apps:
-    - Nextcloud:
-        href: https://nextcloud.truehlab.com
-        description: File sync & storage
-        icon: nextcloud.png
     - n8n:
         href: https://n8n.truehlab.com
         description: Workflow automation
         icon: n8n.png
+    - ntfy:
+        href: https://ntfy.truehlab.com
+        description: Push notifications
+        icon: ntfy.png
+    - Heimdall:
+        href: https://heimdall.truehlab.com
+        description: Application launcher
+        icon: heimdall.png

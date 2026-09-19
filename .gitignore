@@ -14,7 +14,6 @@ snmp-exporter/snmp.yml
 /nginx-proxy-manager/logs/
 /loki/loki-data/
 /homepage/config/kubernetes.yaml
-/homepage/config/proxmox.yaml
 /homepage/config/logs/
 /cockpit/config/ws-certs.d/
 /dockge/data/
