@@ -21,6 +21,10 @@
         href: https://dockge.truehlab.com
         description: Compose stack manager
         icon: dockge.png
+    - Dozzle:
+        href: https://dozzle.truehlab.com
+        description: Live container log viewer
+        icon: dozzle.png
 
 - Monitoring & Logging:
     - Grafana:
@@ -39,10 +43,6 @@
         href: https://uptime.truehlab.com
         description: Uptime & latency monitoring
         icon: uptime-kuma.png
-    - Dozzle:
-        href: https://dozzle.truehlab.com
-        description: Live container log viewer
-        icon: dozzle.png
 
 - Storage & Data Management:
     - QNAP:
