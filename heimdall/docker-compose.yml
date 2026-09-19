@@ -4,8 +4,11 @@ services:
     image: lscr.io/linuxserver/heimdall:latest
     restart: unless-stopped
     ports:
-      - 82:82
-      - 445:445
+      - "82:80"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TZ}
     volumes:
-      - /path/to/heimdall/config:/config
+      - ./config:/config
 
