@@ -1,4 +1,24 @@
-- Monitoring:
+- Networking & Core Infrastructure:
+    - Nginx Proxy Manager:
+        href: https://npm.truehlab.com
+        description: Reverse proxy
+        icon: nginx-proxy-manager.png
+    - Pi-hole:
+        href: https://pihole.truehlab.com
+        description: DNS & ad blocking
+        icon: pi-hole.png
+
+- Container Management:
+    - Portainer:
+        href: https://portainer.truehlab.com
+        description: Container management
+        icon: portainer.png
+    - Dockge:
+        href: https://dockge.truehlab.com
+        description: Compose stack manager
+        icon: dockge.png
+
+- Monitoring & Logging:
     - Grafana:
         href: https://grafana.truehlab.com
         description: Metrics & dashboards
@@ -20,25 +40,29 @@
         description: Live container log viewer
         icon: dozzle.png
 
-- Management:
-    - Portainer:
-        href: https://portainer.truehlab.com
-        description: Container management
-        icon: portainer.png
-    - Nginx Proxy Manager:
-        href: https://npm.truehlab.com
-        description: Reverse proxy
-        icon: nginx-proxy-manager.png
-    - Pi-hole:
-        href: https://pihole.truehlab.com
-        description: DNS & ad blocking
-        icon: pi-hole.png
-    - Dockge:
-        href: https://dockge.truehlab.com
-        description: Compose stack manager
-        icon: dockge.png
+- Storage & Data Management:
+    - QNAP:
+        href: https://qnap.truehlab.com
+        description: NAS web UI
+        icon: qnap.png
 
-- Utilities:
+- Media Services:
+    - Plex:
+        href: https://plex.truehlab.com
+        description: Media server
+        icon: plex.png
+
+- Automation & Workflow:
+    - n8n:
+        href: https://n8n.truehlab.com
+        description: Workflow automation
+        icon: n8n.png
+    - ntfy:
+        href: https://ntfy.truehlab.com
+        description: Push notifications
+        icon: ntfy.png
+
+- Development & Misc Utilities:
     - IT-Tools:
         href: https://it-tools.truehlab.com
         description: Dev/encode/decode toolbox
@@ -52,15 +76,7 @@
         description: Internet speed history
         icon: speedtest-tracker.png
 
-- Media & Apps:
-    - n8n:
-        href: https://n8n.truehlab.com
-        description: Workflow automation
-        icon: n8n.png
-    - ntfy:
-        href: https://ntfy.truehlab.com
-        description: Push notifications
-        icon: ntfy.png
+- Dashboards & Visibility:
     - Heimdall:
         href: https://heimdall.truehlab.com
         description: Application launcher
