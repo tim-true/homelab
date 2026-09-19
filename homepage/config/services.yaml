@@ -3,9 +3,13 @@
         href: https://npm.truehlab.com
         description: Reverse proxy
         icon: nginx-proxy-manager.png
-    - Pi-hole:
-        href: https://pihole.truehlab.com
-        description: DNS & ad blocking
+    - Pi-hole (node0):
+        href: https://pihole0.truehlab.com
+        description: DNS & ad blocking - primary
+        icon: pi-hole.png
+    - Pi-hole (node1):
+        href: https://pihole1.truehlab.com
+        description: DNS & ad blocking - secondary
         icon: pi-hole.png
 
 - Container Management:
