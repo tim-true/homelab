@@ -79,9 +79,3 @@
         href: https://speedtest.truehlab.com
         description: Internet speed history
         icon: speedtest-tracker.png
-
-- Dashboards & Visibility:
-    - Heimdall:
-        href: https://heimdall.truehlab.com
-        description: Application launcher
-        icon: heimdall.png
