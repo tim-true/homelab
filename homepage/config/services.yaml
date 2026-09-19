@@ -44,11 +44,15 @@
         description: Uptime & latency monitoring
         icon: uptime-kuma.png
 
-- Storage & Data Management:
+- Devices:
     - QNAP:
         href: https://qnap.truehlab.com
         description: NAS web UI
         icon: qnap.png
+    - Router:
+        href: http://192.168.1.1
+        description: Netgear admin UI
+        icon: netgear.png
 
 - Media Services:
     - Plex:
