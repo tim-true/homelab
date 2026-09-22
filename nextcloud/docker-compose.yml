@@ -53,6 +53,10 @@ services:
       - OVERWRITECLIURL=https://${NEXTCLOUD_DOMAIN}
     volumes:
       - nextcloud_data:/var/www/html
+      - ${QNAP_SHARE1_PATH}:/mnt/qnap-share1
+      - ${QNAP_SHARE2_PATH}:/mnt/qnap-share2
+      - ${QNAP_SHARE3_PATH}:/mnt/qnap-share3
+      - ${QNAP_SHARE4_PATH}:/mnt/qnap-share4
     networks:
       - nextcloud_net
 
