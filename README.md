@@ -61,9 +61,10 @@ docker compose pull && docker compose up -d
 
 ## Next Steps
 - Customize Cockpit. 
-- Complete Heimdall configuration and test. 
-- Finish and test OpenWebUI on a beefier piece of hardware. 
 - Setup actual notification rules for ntfy. 
-- Setup grafana for Qnap nas. 
+- Bring monitoring back up on nas for Grafana. 
 - Configure docker on Qnap and add environment to portainer
-- Build out nextcloud config, running on qnap.
+- Determine if possible to fix Nextcloud heavy io usage - too much on usb storage, might need to run on other hardware. 
+- Fix speedtest-tracker compose
+- Bring OpenWebUI up on node1 as well as freellmapi project
+
