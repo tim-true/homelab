@@ -1,0 +1,8 @@
+- targets: ['node-exporter:9100']
+  labels:
+    instance: 'node0'
+    host: '<node0-ip>'
+- targets: ['<node1-ip>:9100']
+  labels:
+    instance: 'node1'
+    host: '<node1-ip>'

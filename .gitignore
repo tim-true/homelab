@@ -20,3 +20,5 @@ snmp-exporter/snmp.yml
 /dockge-agent/data/
 /speedtest-tracker/config/
 /uptime-kuma/data/
+/prometheus/targets/*.yml
+!/prometheus/targets/*.yml.example
