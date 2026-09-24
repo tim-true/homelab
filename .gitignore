@@ -17,5 +17,6 @@ snmp-exporter/snmp.yml
 /homepage/config/logs/
 /cockpit/config/ws-certs.d/
 /dockge/data/
+/dockge-agent/data/
 /speedtest-tracker/config/
 /uptime-kuma/data/
