@@ -1,5 +1,5 @@
 title: truehlab
-favicon: https://truehlab.com/favicon.ico
+favicon: https://{{HOMEPAGE_VAR_DOMAIN}}/favicon.ico
 theme: dark
 color: slate
 headerStyle: clean

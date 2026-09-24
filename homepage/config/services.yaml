@@ -1,52 +1,52 @@
 - Networking & Core Infrastructure:
     - Nginx Proxy Manager:
-        href: https://npm.truehlab.com
+        href: https://npm.{{HOMEPAGE_VAR_DOMAIN}}
         description: Reverse proxy
         icon: nginx-proxy-manager.png
     - Pi-hole (node0):
-        href: https://pihole0.truehlab.com
+        href: https://pihole0.{{HOMEPAGE_VAR_DOMAIN}}
         description: DNS & ad blocking - primary
         icon: pi-hole.png
     - Pi-hole (node1):
-        href: https://pihole1.truehlab.com
+        href: https://pihole1.{{HOMEPAGE_VAR_DOMAIN}}
         description: DNS & ad blocking - secondary
         icon: pi-hole.png
 
 - Container Management:
     - Portainer:
-        href: https://portainer.truehlab.com
+        href: https://portainer.{{HOMEPAGE_VAR_DOMAIN}}
         description: Container management
         icon: portainer.png
     - Dockge:
-        href: https://dockge.truehlab.com
+        href: https://dockge.{{HOMEPAGE_VAR_DOMAIN}}
         description: Compose stack manager
         icon: dockge.png
     - Dozzle:
-        href: https://dozzle.truehlab.com
+        href: https://dozzle.{{HOMEPAGE_VAR_DOMAIN}}
         description: Live container log viewer
         icon: dozzle.png
 
 - Monitoring & Logging:
     - Grafana:
-        href: https://grafana.truehlab.com
+        href: https://grafana.{{HOMEPAGE_VAR_DOMAIN}}
         description: Metrics & dashboards
         icon: grafana.png
     - Prometheus:
-        href: https://prometheus.truehlab.com
+        href: https://prometheus.{{HOMEPAGE_VAR_DOMAIN}}
         description: Metrics collection
         icon: prometheus.png
     - Cockpit:
-        href: https://cockpit.truehlab.com
+        href: https://cockpit.{{HOMEPAGE_VAR_DOMAIN}}
         description: System management
         icon: cockpit.png
     - Uptime Kuma:
-        href: https://uptime.truehlab.com
+        href: https://uptime.{{HOMEPAGE_VAR_DOMAIN}}
         description: Uptime & latency monitoring
         icon: uptime-kuma.png
 
 - Devices:
     - QNAP:
-        href: https://qnap.truehlab.com
+        href: https://qnap.{{HOMEPAGE_VAR_DOMAIN}}
         description: NAS web UI
         icon: qnap.png
     - Router:
@@ -56,36 +56,36 @@
 
 - Media Services:
     - Plex:
-        href: https://plex.truehlab.com
+        href: https://plex.{{HOMEPAGE_VAR_DOMAIN}}
         description: Media server
         icon: plex.png
 
 - Storage & Data Management:
     - Nextcloud:
-        href: https://nextcloud.truehlab.com
+        href: https://nextcloud.{{HOMEPAGE_VAR_DOMAIN}}
         description: File sync & storage
         icon: nextcloud.png
 
 - Automation & Workflow:
     - n8n:
-        href: https://n8n.truehlab.com
+        href: https://n8n.{{HOMEPAGE_VAR_DOMAIN}}
         description: Workflow automation
         icon: n8n.png
     - ntfy:
-        href: https://ntfy.truehlab.com
+        href: https://ntfy.{{HOMEPAGE_VAR_DOMAIN}}
         description: Push notifications
         icon: ntfy.png
 
 - Development & Misc Utilities:
     - IT-Tools:
-        href: https://ittools.truehlab.com
+        href: https://ittools.{{HOMEPAGE_VAR_DOMAIN}}
         description: Dev/encode/decode toolbox
         icon: it-tools.png
     - CyberChef:
-        href: https://cyberchef.truehlab.com
+        href: https://cyberchef.{{HOMEPAGE_VAR_DOMAIN}}
         description: Data analysis & transformation
         icon: cyberchef.png
     - Speedtest Tracker:
-        href: https://speedtest.truehlab.com
+        href: https://speedtest.{{HOMEPAGE_VAR_DOMAIN}}
         description: Internet speed history
         icon: speedtest-tracker.png
