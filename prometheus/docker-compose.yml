@@ -23,6 +23,7 @@ services:
     image: prom/node-exporter:latest
     container_name: node-exporter
     restart: unless-stopped
+    uts: host
     ports:
       - "9100:9100"
     command:
