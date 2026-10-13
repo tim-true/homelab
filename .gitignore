@@ -7,6 +7,7 @@ snmp-exporter/snmp.yml
 /pihole/etc-pihole/
 /pihole/etc-dnsmasq.d/
 /prometheus/prometheus_data/
+/prometheus/targets/nodes.yml
 /tailscale/tailscale_data/
 /tailscale/tailscale_tmp/
 /nginx-proxy-manager/npm_data/
